@@ -12,12 +12,5 @@ public class CategoryServiceApplication {
 		SpringApplication.run(CategoryServiceApplication.class, args);
 		System.out.println("Category service running ...");
 	}
-	/**
-	 * facciamo la injection
-	 * chiamando products
-	 */
-	@Bean //
-	RestTemplate restTemplate(){
-		return new RestTemplate();
-	}
+
 }

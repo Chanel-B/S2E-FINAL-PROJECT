@@ -1,3 +1,7 @@
+externalService :
+  category :
+    url : http://localhost:5977/categories
+
 server:
   port: 5877
 
