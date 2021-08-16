@@ -38,7 +38,8 @@ public class ProductController {
     @GetMapping("/detail/{id}")
     ProductDetail detaliProduct(@PathVariable("id") int id ){
         Product p = repo.findById(id).get();
-        Category c = restTemplate.getForObject(categoryUrl, Category.class);
+        int idCategory = p.getCategory();
+        Category c = restTemplate.getForObject(categoryUrl + '/' + idCategory, Category.class);
 
         return new ProductDetail(p, c);
     }
