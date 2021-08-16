@@ -25,4 +25,5 @@ public class CategoryController {
         return repo.findAll();
     }
 
+    //TODO POST, PUT, DELETE ECC...
 }
