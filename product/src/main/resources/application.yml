@@ -1,0 +1,6 @@
+server:
+  port: 5877
+
+spring:
+  jpa:
+    defer-datasource-initialization: true
