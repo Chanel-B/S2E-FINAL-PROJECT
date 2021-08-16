@@ -24,5 +24,6 @@ public class ProductController {
         return repo.findAll();
     }
 
+    //TODO for post, put, delete ecc...
 
 }

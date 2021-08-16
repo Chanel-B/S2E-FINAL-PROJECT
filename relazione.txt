@@ -1,0 +1,15 @@
+
+
+
+PRODUCT-SERVICE
+	Created and is functioning, i used application.yml to make the reading of the data sql easy.
+	{
+		server:
+  			port: 5877  /*this is the port to used on the url*/
+
+		spring:
+		  jpa:
+		    defer-datasource-initialization: true /*to ease the reading of data.sql*/
+	}
+
+	lombok is used in the ProductController to permete easy configurations.
