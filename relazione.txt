@@ -7,7 +7,7 @@ PRODUCT-SERVICE
 		server:
   			port: 5877  /*this is the port to used on the url*/
 
-		spring:
+		spring: /*permet us to initialized JPA without pbs*/
 		  jpa:
 		    defer-datasource-initialization: true /*to ease the reading of data.sql*/
 	}
