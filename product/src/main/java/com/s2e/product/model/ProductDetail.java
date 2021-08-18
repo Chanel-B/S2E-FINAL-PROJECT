@@ -16,5 +16,4 @@ import javax.persistence.*;
 public class ProductDetail {
     private Product product;
     private Category category;
-
 }

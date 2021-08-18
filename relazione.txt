@@ -17,3 +17,6 @@ PRODUCT-SERVICE
 Netflix (è stato il precursore dei microservizi)
 eureka è un microservizio che utiliziamo,
 nel spring si può copiare una calsse per usare in un altro progetto inverce di solo chiamare 
+
+
+error : (token `JsonToken.START_ARRAY`)
