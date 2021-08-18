@@ -20,3 +20,94 @@ nel spring si può copiare una calsse per usare in un altro progetto inverce di 
 
 
 error : (token `JsonToken.START_ARRAY`)
+
+
+lb : loadBalanced
+
+
+SERVICE REGISTRY
+----------------
+server:
+  port: 8761
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+
+
+CATEGORY SERVICE POM.XML
+------------------------
+server :
+  port : 5977
+
+spring:
+  jpa:
+    defer-datasource-initialization: true
+  application:
+    name: CATEGORY-SERVICE
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  istance:
+    hostname: localhost
+
+
+PRODUCTS SERVICES
+-----------------
+externalService :
+  category :
+    url : http://localhost:5977/categories
+
+server:
+  port: 5877
+
+spring:
+  jpa:
+    defer-datasource-initialization: true
+  application:
+    name: PRODUCT-SERVICE
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  istance:
+    hostname: localhost
+
+
+
+API GATEWAY
+-----------
+server :
+  porta: 9999
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  istance:
+    hostname: localhost
+
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: PRODUCT-SERVICE
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            -Path=/products/**
+        - id: GATEGORY-SERVICE
+          uri: lb://CATEGORY-SERVICE
+          predicates:
+            - Path=/categories/**
