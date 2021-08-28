@@ -28,3 +28,11 @@ spring:
           uri: lb://LINEPRODUCT-SERVICE
           predicates:
             - Path=/lineproducts/**
+        - id: ORDERS-SERVICE
+          uri: lb://ORDERS-SERVICE
+          predicates:
+            - Path=/orders/**
+        - id: USER-SERVICE
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/users/**
