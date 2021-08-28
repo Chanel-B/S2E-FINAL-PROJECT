@@ -1,6 +1,6 @@
 package com.s2e.userservice.controller;
 
-import com.s2e.userservice.model.User;
+import com.s2e.userservice.model.Users;
 import com.s2e.userservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,17 +16,17 @@ public class UserController {
     UserRepository userRepository;
 
     @GetMapping
-    public Collection<User> getAllUsers(){
+    public Collection<Users> getAllUsers(){
         return userRepository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<User> getUserById(@PathVariable("id") int id){
+    public Optional<Users> getUserById(@PathVariable("id") int id){
         return userRepository.findById(id);
     }
 
     @PostMapping("/")
-    public User saveUser(@RequestBody User user){
+    public Users saveUser(@RequestBody Users user){
         return userRepository.save(user);
     }
 }

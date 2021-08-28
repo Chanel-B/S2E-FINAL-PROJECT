@@ -10,15 +10,17 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "USER")
-public class User {
+@Table(name = "USERS")
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String nome;
-    private String cognome;
+    private String name;
+    private String surname;
     private String mail;
+
+    @Column(name = "ORDERID")
     private int orderId;
 
 }
