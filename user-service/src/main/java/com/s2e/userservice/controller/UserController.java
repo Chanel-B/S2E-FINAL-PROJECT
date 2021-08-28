@@ -29,19 +29,36 @@ public class UserController {
     @Autowired
     RestTemplate restTemplate; //va a prendere nella classe application.java che initializza il restemplate
 
+    /**
+     * calling repo for services
+     */
     @Autowired
     UserRepository userRepository;
 
+    /**
+     * Get the clloction of all Users
+     * @return : list of users wwith details
+     */
     @GetMapping
     public Collection<Users> getAllUsers(){
         return userRepository.findAll();
     }
 
+    /**
+     * Getting a user by taking id in input
+     * @param id (INPUT para)
+     * @return : user details
+     */
     @GetMapping("/{id}")
     public Optional<Users> getUserById(@PathVariable("id") int id){
         return userRepository.findById(id);
     }
 
+    /**
+     * Post (svae new user ) by taking his data in INPUT
+     * @param user
+     * @return : save new user
+     */
     @PostMapping("/")
     public Users saveUser(@RequestBody Users user){
         return userRepository.save(user);
