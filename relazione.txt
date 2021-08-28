@@ -119,3 +119,12 @@ spring:
           uri: lb://CATEGORY-SERVICE
           predicates:
             - Path=/categories/**
+
+
+******************************************
+28/08/2021
+ERRUR : APPLICATION NOT RUNNING
+THIS erruer was due to the fact that in application i didn't put 
+--> @Bean
+ on the method RestTemplate
+ *******************************************
