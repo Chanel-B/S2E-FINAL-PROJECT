@@ -28,6 +28,4 @@ public class LineProductController {
     public LineProduct postProduct(@RequestBody LineProduct lineProduct){// requestbody to save the data in our database
         return repo.save(lineProduct);
     }
-
-
 }
