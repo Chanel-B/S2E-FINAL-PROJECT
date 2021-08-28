@@ -39,7 +39,7 @@ public class LineProductController {
         return repo.save(lineProduct);
     }
 
-    @GetMapping("/linedetail/{id}")
+    @GetMapping("/lineproductdetails/{id}")
     LineProductDetail LineProductDetail(@PathVariable("id") int id ){
         LineProduct lineProduct = repo.findById(id).get();
         int idProduct = lineProduct.getProductId();

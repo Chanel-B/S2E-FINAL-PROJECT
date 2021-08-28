@@ -16,17 +16,17 @@ public class OderController {
     OrderRepository orderRepository;
 
     @GetMapping
-    public Collection<Orders> getAllOrder(){
+    Collection<Orders> getAllOrder(){
         return orderRepository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Orders> getOrderById(@PathVariable("id") int id){
+    Optional<Orders> getOrderById(@PathVariable("id") int id){
         return orderRepository.findById(id);
     }
 
     @PostMapping("/")
-    public Orders postProduct(@RequestBody Orders order){// requestbody to save the data in our database
+    Orders postProduct(@RequestBody Orders order){// requestbody to save the data in our database
         return orderRepository.save(order);
     }
 

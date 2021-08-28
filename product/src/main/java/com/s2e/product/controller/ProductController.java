@@ -38,6 +38,12 @@ public class ProductController {
         return repo.findAll();
     }
 
+    //returns by id we just call this in products
+    @GetMapping("/{id}")
+    Product getById(@PathVariable("id") int id){
+        return repo.findById(id).get();
+    }
+
     @PostMapping("/")
     public Product postProduct(@RequestBody Product product){// requestbody to save the data in our database
         return repo.save(product);

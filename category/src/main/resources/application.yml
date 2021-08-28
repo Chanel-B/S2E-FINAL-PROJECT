@@ -1,3 +1,7 @@
+externalService :
+  product:
+    url: http://localhost:5877/products
+
 server :
   port : 5977
 
