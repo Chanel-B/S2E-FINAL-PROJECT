@@ -6,10 +6,7 @@ import com.s2e.product.model.ProductDetail;
 import com.s2e.product.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Collection;
@@ -42,6 +39,11 @@ public class ProductController {
         Category c = restTemplate.getForObject(categoryUrl + '/' + idCategory, Category.class);
 
         return new ProductDetail(p, c);
+    }
+
+    @PostMapping("/")
+    public Product postProduct(@RequestBody Product product){// requestbody to save the data in our database
+        return repo.save(product);
     }
 
     //TODO for post, put, delete ecc...

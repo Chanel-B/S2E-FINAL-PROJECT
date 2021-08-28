@@ -3,10 +3,7 @@ package com.s2e.category.controller;
 import com.s2e.category.model.Category;
 import com.s2e.category.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -31,5 +28,10 @@ public class CategoryController {
         return repo.findById(id).get();
     }
 
-    //TODO POST, PUT, DELETE ECC...
+    @PostMapping("/")
+    public Category postProduct(@RequestBody Category category){// requestbody to save the data in our database
+        return repo.save(category);
+    }
+
+    //TODO PUT, DELETE ECC...
 }
