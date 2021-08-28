@@ -1,5 +1,7 @@
-package com.s2e.lineproducts.model;
+package com.s2e.lineproducts.virtualobject;
 
+import com.s2e.lineproducts.model.LineProduct;
+import com.s2e.lineproducts.model.Product;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

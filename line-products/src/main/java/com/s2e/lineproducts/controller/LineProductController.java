@@ -2,6 +2,8 @@ package com.s2e.lineproducts.controller;
 
 import com.s2e.lineproducts.model.*;
 import com.s2e.lineproducts.repository.LineProductRepository;
+import com.s2e.lineproducts.virtualobject.LineOrdersDetail;
+import com.s2e.lineproducts.virtualobject.LineProductDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -28,14 +30,26 @@ public class LineProductController {
     @Autowired
     RestTemplate restTemplate; //va a prendere nella classe application.java che initializza il restemplate
 
+    /**
+     * calling repository to get services
+     */
     @Autowired
     LineProductRepository repo;
 
+    /**
+     * Getting the list of all lines-Products
+     * @return : the list of all lines-Products
+     */
     @GetMapping
     public Collection<LineProduct> getAll(){
         return repo.findAll();
     }
 
+    /**
+     * Getting a particular line-product by taking an id in input
+     * @param id : line-product id
+     * @return : a line-product
+     */
     @GetMapping("/{id}")
     public LineProduct getLineProductById(@PathVariable("id") int id){
         return repo.findById(id).get();
@@ -46,6 +60,11 @@ public class LineProductController {
         return repo.save(lineProduct);
     }
 
+    /**
+     * calling external service (PRODUCT-SERVICE)
+     * @param id : (id of the lineProduct)
+     * @return : lineOrderDetail ( which shows =  lineProduct + Product )
+     */
     @GetMapping("/lineproductdetails/{id}")
     LineProductDetail LineProductDetail(@PathVariable("id") int id ){
         LineProduct lineProduct = repo.findById(id).get();
@@ -55,6 +74,11 @@ public class LineProductController {
         return new LineProductDetail(lineProduct, product);
     }
 
+    /**
+     * calling external service (ORDER-SERVICE)
+     * @param id : (id of the lineProduct)
+     * @return : lineOrderDetail ( which shows =  lineProduct + Orders )
+     */
     @GetMapping("/lineOdersdetails/{id}")
     LineOrdersDetail LineOrdersDetail(@PathVariable("id") int id ){
         LineProduct lineProduct = repo.findById(id).get();
