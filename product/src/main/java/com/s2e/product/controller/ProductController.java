@@ -18,9 +18,15 @@ import java.util.Collection;
 @RequestMapping("/products")
 public class ProductController {
 
+    /**
+     * calling external service {CATEGORY}
+     */
     @Value("${externalService.category.url}")
     private String categoryUrl;
 
+    /**
+     * calling external service {CATEGORY}
+     */
     @Autowired
     RestTemplate restTemplate; //va a prendere nella classe application.java che initializza il restemplate
 
@@ -32,6 +38,16 @@ public class ProductController {
         return repo.findAll();
     }
 
+    @PostMapping("/")
+    public Product postProduct(@RequestBody Product product){// requestbody to save the data in our database
+        return repo.save(product);
+    }
+
+    /**
+     * FOR calling external service {CATEGORY}
+     * @param id
+     * @return
+     */
     @GetMapping("/detail/{id}")
     ProductDetail detaliProduct(@PathVariable("id") int id ){
         Product p = repo.findById(id).get();
@@ -41,10 +57,7 @@ public class ProductController {
         return new ProductDetail(p, c);
     }
 
-    @PostMapping("/")
-    public Product postProduct(@RequestBody Product product){// requestbody to save the data in our database
-        return repo.save(product);
-    }
+
 
     //TODO for post, put, delete ecc...
 

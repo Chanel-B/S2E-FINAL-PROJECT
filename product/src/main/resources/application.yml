@@ -1,8 +1,6 @@
 externalService :
   category :
     url : http://localhost:5977/categories
-  lineproduct:
-    url: http://localhost:6077/lineproducts
 
 server:
   port: 5877

@@ -15,4 +15,9 @@ public class LineProductApplication {
 		System.out.println("Line Products Service Running...");
 	}
 
+	@Bean
+	RestTemplate restTemplate(){
+		return new RestTemplate();
+	}
+
 }
