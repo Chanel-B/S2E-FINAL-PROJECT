@@ -17,13 +17,13 @@ public class ProductServiceApplication {
 
 	/**
 	 * facciamo la injection
-	 * chiamando products
+	 * c@Bean
+	 * 	//
+	 * 	Resthiamando products
 	 * configurazione automatico
 	 * let go to controller to continue
 	 */
-
 	@Bean
-	//
 	RestTemplate restTemplate(){
 		return new RestTemplate();
 	}
