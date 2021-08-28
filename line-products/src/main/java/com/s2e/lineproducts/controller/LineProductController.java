@@ -15,6 +15,9 @@ import java.util.Collection;
 @RequestMapping("/lineproducts")
 public class LineProductController {
 
+    /**
+     * calling Product-Service with url
+     */
     @Value("${externalService.product.url}")
     private String productUrl;
 
