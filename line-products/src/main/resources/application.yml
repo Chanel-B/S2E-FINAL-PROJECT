@@ -1,3 +1,7 @@
+externalService :
+  order:
+    url: http://localhost:6077/lineproducts
+
 server :
   port : 6077
 

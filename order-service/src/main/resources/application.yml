@@ -1,5 +1,15 @@
+externalService :
+  lineproduct:
+    url: http://localhost:6077/lineproducts
+
 server :
   port : 6177
+
+spring:
+  jpa:
+    defer-datasource-initialization: true
+  application:
+    name: ORDERS-SERVICE
 
 eureka:
   client:
