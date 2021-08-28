@@ -23,4 +23,7 @@ public class LineProduct {
     @Column(name = "PRODUCTQUANTITY")
     private int productQuantity;
 
+    @Column(name = "ORDERID")
+    private int orderId;
+
 }

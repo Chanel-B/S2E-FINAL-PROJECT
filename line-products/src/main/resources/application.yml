@@ -2,7 +2,7 @@ externalService :
   product:
     url: http://localhost:5877/products
   order:
-    url: http://localhost:6077/lineproducts
+    url: http://localhost:6177/orders
 
 
 server :

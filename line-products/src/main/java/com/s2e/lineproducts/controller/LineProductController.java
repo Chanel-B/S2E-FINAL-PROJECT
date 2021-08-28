@@ -1,8 +1,6 @@
 package com.s2e.lineproducts.controller;
 
-import com.s2e.lineproducts.model.LineProduct;
-import com.s2e.lineproducts.model.LineProductDetail;
-import com.s2e.lineproducts.model.Product;
+import com.s2e.lineproducts.model.*;
 import com.s2e.lineproducts.repository.LineProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +18,12 @@ public class LineProductController {
      */
     @Value("${externalService.product.url}")
     private String productUrl;
+
+    /**
+     * calling Order-Service with url
+     */
+    @Value("${externalService.order.url}")
+    private String ordersUrl;
 
     @Autowired
     RestTemplate restTemplate; //va a prendere nella classe application.java che initializza il restemplate
@@ -49,6 +53,15 @@ public class LineProductController {
         Product product = restTemplate.getForObject(productUrl + '/' + idProduct, Product.class);
 
         return new LineProductDetail(lineProduct, product);
+    }
+
+    @GetMapping("/lineOdersdetails/{id}")
+    LineOrdersDetail LineOrdersDetail(@PathVariable("id") int id ){
+        LineProduct lineProduct = repo.findById(id).get();
+        int idOrders= lineProduct.getOrderId();
+        Orders orders = restTemplate.getForObject(ordersUrl + '/' + 1, Orders.class);
+
+        return new LineOrdersDetail(lineProduct, orders);
     }
 
 }
