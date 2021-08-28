@@ -27,6 +27,10 @@ public class LineProductController {
     @Value("${externalService.order.url}")
     private String ordersUrl;
 
+    /**
+     * calling the restTemplate
+     * from application
+     */
     @Autowired
     RestTemplate restTemplate; //va a prendere nella classe application.java che initializza il restemplate
 
@@ -83,7 +87,7 @@ public class LineProductController {
     LineOrdersDetail LineOrdersDetail(@PathVariable("id") int id ){
         LineProduct lineProduct = repo.findById(id).get();
         int idOrders= lineProduct.getOrderId();
-        Orders orders = restTemplate.getForObject(ordersUrl + '/' + 1, Orders.class);
+        Orders orders = restTemplate.getForObject(ordersUrl + '/' + idOrders, Orders.class);
 
         return new LineOrdersDetail(lineProduct, orders);
     }

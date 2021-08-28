@@ -1,6 +1,6 @@
 externalService :
   order:
-    url: http://localhost:6077/lineproducts
+    url: http://localhost:6177/orders
 
 server :
   port : 6277
