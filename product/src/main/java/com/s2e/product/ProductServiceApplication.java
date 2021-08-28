@@ -21,6 +21,7 @@ public class ProductServiceApplication {
 	 * configurazione automatico
 	 * let go to controller to continue
 	 */
+
 	@Bean
 	//
 	RestTemplate restTemplate(){
